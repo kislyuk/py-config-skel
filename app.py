@@ -17,7 +17,7 @@ class Config(MutableMapping):
         except Exception as e:
             self._data = {}
 
-    def save(self):
+    def save(self, mode=0o600):
         try:
             os.makedirs(self.config_dir)
         except OSError as e:
@@ -25,6 +25,7 @@ class Config(MutableMapping):
                 raise
         with open(self.config_file, "w") as fh:
             json.dump(self._data, fh)
+        os.chmod(self.config_file, mode)
 
     def __getitem__(self, item):
         if item not in self._data:
