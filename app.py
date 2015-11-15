@@ -6,7 +6,6 @@
 
 from __future__ import print_function, unicode_literals, division, absolute_import
 
-#from io import open
 import os, sys, json, errno, collections, atexit
 
 class Config(collections.MutableMapping):
